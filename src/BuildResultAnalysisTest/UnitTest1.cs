@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace BuildResultAnalysisE2ETest
+namespace BuildResultAnalysisTest
 {
     public class Tests
     {

@@ -13,6 +13,6 @@ steps:
   inputs:
     testSelector: 'testAssemblies'
     testAssemblyVer2: |
-      **\BuildResultAnalysisE2ETest.dll
+      **\BuildResultAnalysisTest.dll
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
