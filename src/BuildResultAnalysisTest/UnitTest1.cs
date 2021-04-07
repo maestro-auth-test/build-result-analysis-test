@@ -10,6 +10,7 @@ namespace BuildResultAnalysisTest
             Assert.Fail();
         }
 
+        [Test]
         public void TestAlwaysFailingSecond()
         {
             Assert.Fail();
