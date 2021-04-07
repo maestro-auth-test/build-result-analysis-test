@@ -12,11 +12,11 @@ stages:
 
         steps:
           - task: DotNetCoreCLI@2
-              inputs:
-              command: 'build'
-              projects: '**\*.csproj'
+            inputs:
+                command: 'build'
+                projects: '**\*.csproj'
           - task: VSTest@2
-              inputs:
+            inputs:
               testSelector: 'testAssemblies'
               testAssemblyVer2: |
                   **\BuildResultAnalysisTest.dll
@@ -28,14 +28,13 @@ stages:
         timeoutInMinutes: 10
         pool:
           vmImage: 'windows-latest'
-
         steps:
           - task: DotNetCoreCLI@2
-              inputs:
+            inputs:
               command: 'build'
               projects: '**\*.csproj'
           - task: VSTest@2
-              inputs:
+            inputs:
               testSelector: 'testAssemblies'
               testAssemblyVer2: |
                   **\BuildResultAnalysisTest.dll
