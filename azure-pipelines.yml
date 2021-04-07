@@ -16,3 +16,15 @@ steps:
       **\BuildResultAnalysisTest.dll
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '**\*.csproj'
+- task: VSTest@2
+  inputs:
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      **\BuildResultAnalysisTest.dll
+      !**\obj\**
+    searchFolder: '$(System.DefaultWorkingDirectory)'
