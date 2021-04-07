@@ -9,5 +9,10 @@ namespace BuildResultAnalysisTest
         {
             Assert.Fail();
         }
+
+        public void TestAlwaysFailingSecond()
+        {
+            Assert.Fail();
+        }
     }
 }
