@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 
 namespace BuildResultAnalysisTest
@@ -5,33 +6,18 @@ namespace BuildResultAnalysisTest
     public class Tests
     {
         [Test]
-        public void TestAlwaysFailing()
+        public void TestFailingRandomly()
         {
-            Assert.Fail();
-        }
-
-        [Test]
-        public void TestAlwaysFailing3()
-        {
-            Assert.Fail();
-        }
-
-        [Test]
-        public void TestAlwaysFailing4()
-        {
-            Assert.Fail();
-        }
-
-        [Test]
-        public void TestAlwaysFailing5()
-        {
-            Assert.Fail();
-        }
-
-        [Test]
-        public void TestAlwaysFailing6()
-        {
-            Assert.Fail();
+            Random rand = new Random();
+            bool result = rand.Next(0, 2) != 0;
+            if (result)
+            {
+                Assert.Fail();
+            }
+            else
+            {
+                Assert.Pass();
+            }
         }
     }
 }
