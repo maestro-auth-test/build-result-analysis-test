@@ -15,15 +15,9 @@ stages:
             inputs:
                 command: 'build'
                 projects: '**\*.csproj'
-          - task: VSTest@2
-            inputs:
-              testSelector: 'testAssemblies'
-              testAssemblyVer2: |
-                  **\BuildResultAnalysisTest.dll
-                  !**\obj\**
-              searchFolder: '$(System.DefaultWorkingDirectory)'
 
   - stage: OtherStageForFun
+    dependsOn: Build
     jobs:
       - job: FirstJob
         displayName: First Job
@@ -43,3 +37,26 @@ stages:
                   **\BuildResultAnalysisTest.dll
                   !**\obj\**
               searchFolder: '$(System.DefaultWorkingDirectory)'
+
+  - stage: OtherStageForNotFun
+    dependsOn: Build
+    jobs:
+      - job: FirstJob
+        displayName: First Job
+        timeoutInMinutes: 10
+        pool:
+          vmImage: 'windows-latest'
+
+        steps:
+          - task: DotNetCoreCLI@2
+            inputs:
+                command: 'build'
+                projects: '**\*.csproj'
+          - task: VSTest@2
+            inputs:
+              testSelector: 'testAssemblies'
+              testAssemblyVer2: |
+                  **\BuildResultAnalysisTest.dll
+                  !**\obj\**
+              searchFolder: '$(System.DefaultWorkingDirectory)'
+
