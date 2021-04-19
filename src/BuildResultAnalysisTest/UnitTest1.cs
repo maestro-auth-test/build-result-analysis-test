@@ -10,14 +10,9 @@ namespace BuildResultAnalysisTest
         {
             Random rand = new Random();
             bool result = rand.Next(0, 2) != 0;
-            if (result)
-            {
+           
                 Assert.Fail();
-            }
-            else
-            {
-                Assert.Pass();
-            }
+           
         }
     }
 }
