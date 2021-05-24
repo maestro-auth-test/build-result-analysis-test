@@ -1,14 +1,18 @@
 using NUnit.Framework;
 
-namespace BuildResultAnalysisTest
+namespace SecondaryTests
 {
     public class Tests
     {
+        [SetUp]
+        public void Setup()
+        {
+        }
+
         [Test]
-        public void TestAlwaysFailing()
+        public void FailingTest()
         {
             Assert.Fail();
         }
-
     }
 }
