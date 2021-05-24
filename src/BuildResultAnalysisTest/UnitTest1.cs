@@ -9,5 +9,6 @@ namespace BuildResultAnalysisTest
         {
             Assert.Fail();
         }
+
     }
 }
