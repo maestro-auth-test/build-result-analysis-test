@@ -12,9 +12,9 @@ namespace SecondaryTests
         }
 
         [Test]
-        public void LongFailingTest()
+        public async Task LongFailingTestAsync()
         {
-            Task.Delay(TimeSpan.FromMinutes(5));
+            await Task.Delay(TimeSpan.FromMinutes(5));
             Assert.Fail();
         }
     }
