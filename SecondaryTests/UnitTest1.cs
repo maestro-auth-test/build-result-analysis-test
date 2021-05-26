@@ -1,4 +1,6 @@
 using NUnit.Framework;
+using System;
+using System.Threading.Tasks;
 
 namespace SecondaryTests
 {
@@ -10,8 +12,9 @@ namespace SecondaryTests
         }
 
         [Test]
-        public void FailingTest()
+        public void LongFailingTest()
         {
+            Task.Delay(TimeSpan.FromMinutes(5));
             Assert.Fail();
         }
     }
