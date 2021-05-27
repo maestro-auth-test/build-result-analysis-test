@@ -49,5 +49,6 @@ namespace BuildResultAnalysisTest
                 Assert.Pass();
             }
         }
+
     }
 }
