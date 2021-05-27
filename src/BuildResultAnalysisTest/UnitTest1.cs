@@ -14,5 +14,6 @@ namespace BuildResultAnalysisTest
                 Assert.Fail();
            
         }
+
     }
 }
