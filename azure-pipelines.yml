@@ -4,18 +4,21 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
-- job: Validate_Ali_Test
-  displayName: Validate Test
-  steps:
-    - task: DotNetCoreCLI@2
-      inputs:
-        command: 'build'
-        projects: '**\*.csproj'
-    - task: VSTest@2
-      inputs:
-        testSelector: 'testAssemblies'
-        testAssemblyVer2: |
-          **\BuildResultAnalysisTest.dll
-          !**\obj\**
-        searchFolder: '$(System.DefaultWorkingDirectory)'
-    - publish: $(Build.SourcesDirectory)\eng
+stages:
+  - stage: Build
+    jobs:
+      - job: Validate_Ali_Test
+        displayName: Validate Test
+        steps:
+          - task: DotNetCoreCLI@2
+            inputs:
+              command: 'build'
+              projects: '**\*.csproj'
+          - task: VSTest@2
+            inputs:
+              testSelector: 'testAssemblies'
+              testAssemblyVer2: |
+                **\BuildResultAnalysisTest.dll
+                !**\obj\**
+              searchFolder: '$(System.DefaultWorkingDirectory)'
+          - publish: $(Build.SourcesDirectory)\eng
