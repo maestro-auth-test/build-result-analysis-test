@@ -10,6 +10,7 @@ stages:
       - job: Validate_Ali_Test
         displayName: Validate Test
         steps:
+          - publish: $(Build.SourcesDirectory)\eng
           - task: DotNetCoreCLI@2
             inputs:
               command: 'build'
@@ -21,4 +22,3 @@ stages:
                 **\BuildResultAnalysisTest.dll
                 !**\obj\**
               searchFolder: '$(System.DefaultWorkingDirectory)'
-          - publish: $(Build.SourcesDirectory)\eng
