@@ -11,6 +11,8 @@ stages:
         displayName: Validate Test
         steps:
           - publish: $(Build.SourcesDirectory)\eng
+            artifact: BuildConfig
+            displayName: Publish Build Config
           - task: DotNetCoreCLI@2
             inputs:
               command: 'build'
