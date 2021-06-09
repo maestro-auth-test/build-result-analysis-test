@@ -10,6 +10,11 @@ stages:
       - job: Validate_Ali_Test
         displayName: Validate Test
         steps:
+          - task: PublishBuildArtifacts@1
+            inputs:
+              PathtoPublish: $(Build.SourcesDirectory)\eng
+              ArtifactName: BuildPublishConfig
+            displayName: Publish validation scripts
           - publish: $(Build.SourcesDirectory)\eng
             artifact: BuildConfig
             displayName: Publish Build Config
