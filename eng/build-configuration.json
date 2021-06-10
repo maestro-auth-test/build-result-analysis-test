@@ -2,5 +2,5 @@
   "RetryStages": [ "Build" ],
   "RetryJobs": [ "Validate_Ali_Test" ],
   "RetriesLimit": 2,
-  "RetryAll": false
+  "RetryAll": false 
 }
