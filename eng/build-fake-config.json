@@ -1,0 +1,6 @@
+{
+  "RetryStages": [ "Fake.Build" ],
+  "RetryJobs": [ "Fake.Validate_Ali_Test" ],
+  "RetriesLimit": 2,
+  "RetryAll": false
+}
