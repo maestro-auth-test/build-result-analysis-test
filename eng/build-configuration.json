@@ -1,6 +1,10 @@
 {
-  "RetryStages": [ "Build" ],
-  "RetryJobs": [ "Validate_Ali_Test" ],
-  "RetriesLimit": 2,
-  "RetryAll": false
+  "RetryByAnyError": false,
+  "RetryCountLimit": 2,
+  "RetryByErrors": [
+    {
+      "ErrorMessage": "Vstest failed with error",
+      "ErrorRegex": ".*\\[error]Vstest failed with error.*"
+    }
+  ]
 }
