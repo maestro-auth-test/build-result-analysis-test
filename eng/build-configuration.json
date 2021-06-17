@@ -3,7 +3,6 @@
   "RetryCountLimit": 2,
   "RetryByErrors": [
     {
-      "ErrorMessage": "Vstest failed with error",
       "ErrorRegex": ".*\\[error]Vstest failed with error.*"
     }
   ]
