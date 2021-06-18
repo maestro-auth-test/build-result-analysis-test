@@ -16,7 +16,7 @@ stages:
               ArtifactName: BuildPublishConfig
             displayName: Publish validation scripts
           - publish: $(Build.SourcesDirectory)\eng
-            artifact: BuildConfig
+            artifact: BuildConfiguration
             displayName: Publish Build Config
           - task: DotNetCoreCLI@2
             inputs:
