@@ -3,7 +3,7 @@
   "RetryCountLimit": 2,
   "RetryByErrors": [
     {
-      "ErrorRegex": ".*\\[error]Vstest failed with error.*"
+      "ErrorRegex": ".*Vstest failed with error.*"
     }
   ]
 }
