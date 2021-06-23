@@ -21,11 +21,33 @@ stages:
           - task: DotNetCoreCLI@2
             inputs:
               command: 'build'
-              projects: '**\*.csproj'
+              projects: '**\BuildResultAnalysisTest.csproj'
           - task: VSTest@2
             inputs:
               testSelector: 'testAssemblies'
               testAssemblyVer2: |
                 **\BuildResultAnalysisTest.dll
+                !**\obj\**
+              searchFolder: '$(System.DefaultWorkingDirectory)'
+      - job: Validate_Ali_Test_Succeded
+        displayName: Validate Test
+        steps:
+          - task: PublishBuildArtifacts@1
+            inputs:
+              PathtoPublish: $(Build.SourcesDirectory)\eng
+              ArtifactName: BuildPublishConfig
+            displayName: Publish validation scripts
+          - publish: $(Build.SourcesDirectory)\eng
+            artifact: BuildConfiguration
+            displayName: Publish Build Config
+          - task: DotNetCoreCLI@2
+            inputs:
+              command: 'build'
+              projects: '**\SecondaryTests.csproj'
+          - task: VSTest@2
+            inputs:
+              testSelector: 'testAssemblies'
+              testAssemblyVer2: |
+                **\SecondaryTests.dll
                 !**\obj\**
               searchFolder: '$(System.DefaultWorkingDirectory)'
