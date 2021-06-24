@@ -1,6 +1,6 @@
 {
   "RetryByAnyError": false,
-  "RetryCountLimit": 2,
+  "RetryCountLimit": 1,
   "RetryByErrors": [
     {
       "ErrorRegex": ".*Vstest failed with error.*"
