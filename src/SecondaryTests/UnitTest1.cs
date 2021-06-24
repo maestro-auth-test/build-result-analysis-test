@@ -2,15 +2,10 @@ using NUnit.Framework;
 
 namespace SecondaryTests
 {
-    public class Tests
+    public class UnitTest1
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
         [Test]
-        public void FailingTest()
+        public void TestMethod1()
         {
             Assert.Pass();
         }
