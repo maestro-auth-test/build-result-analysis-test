@@ -1,9 +1,7 @@
 {
   "RetryByAnyError": false,
   "RetryCountLimit": 1,
-  "RetryByErrors": [
-    {
-      "ErrorRegex": ".*Vstest failed with error.*"
-    }
-  ]
+  "RetryByPipeline": {
+    "RetryJobs": [ { "JobName": "Validate_Ali_Test" } ]
+  }
 }
