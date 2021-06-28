@@ -7,10 +7,9 @@ pool:
 stages:
   - stage: Build
     jobs:
-      - job: Validate_Ali_Test
-        displayName: Validate Test
+      - job: Validate_Test_Failing
         steps:
-          - publish: $(Build.SourcesDirectory)\eng
+          - publish: $(Build.SourcesDirectory)\eng\BuildConfiguration
             artifact: BuildConfiguration
             displayName: Publish Build Config
           - task: DotNetCoreCLI@2
@@ -24,7 +23,7 @@ stages:
                 **\BuildResultAnalysisTest.dll
                 !**\obj\**
               searchFolder: '$(System.DefaultWorkingDirectory)'
-      - job: Validate_Ali_Test_Succeded
+      - job: Validate_Test_Succeded
         steps:
           - publish: $(Build.SourcesDirectory)\eng
             artifact: BuildConfiguration
