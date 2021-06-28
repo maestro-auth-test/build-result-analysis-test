@@ -25,7 +25,6 @@ stages:
                 !**\obj\**
               searchFolder: '$(System.DefaultWorkingDirectory)'
       - job: Validate_Ali_Test_Succeded
-        displayName: Validate Test
         steps:
           - publish: $(Build.SourcesDirectory)\eng
             artifact: BuildConfiguration
