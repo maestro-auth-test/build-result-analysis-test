@@ -23,7 +23,7 @@ stages:
                 **\BuildResultAnalysisTest.dll
                 !**\obj\**
               searchFolder: '$(System.DefaultWorkingDirectory)'
-      - job: Validate_Test_Succeded
+      - job: Validate_Test_Failing
         steps:
           - task: DotNetCoreCLI@2
             inputs:
