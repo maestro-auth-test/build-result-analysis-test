@@ -2,6 +2,6 @@
   "RetryByAnyError": false,
   "RetryCountLimit": 1,
   "RetryByPipeline": {
-    "RetryJobs": [ { "JobName": "Validate_Test_Failing" } ]
+    "RetryStage": [ { "StageName": "Build" } ]
   }
 }
