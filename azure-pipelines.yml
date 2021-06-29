@@ -25,9 +25,6 @@ stages:
               searchFolder: '$(System.DefaultWorkingDirectory)'
       - job: Validate_Test_Succeded
         steps:
-          - publish: $(Build.SourcesDirectory)\eng
-            artifact: BuildConfiguration
-            displayName: Publish Build Config
           - task: DotNetCoreCLI@2
             inputs:
               command: 'build'
