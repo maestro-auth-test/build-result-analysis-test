@@ -2,6 +2,6 @@
   "RetryByAnyError": false,
   "RetryCountLimit": 1,
   "RetryByPipeline": {
-    "RetryStage": [ { "StageName": "Build" } ]
+    "RetryStages": [ { "StageName": "Build" } ]
   }
 }
