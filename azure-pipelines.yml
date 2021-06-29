@@ -24,6 +24,7 @@ stages:
                 !**\obj\**
               searchFolder: '$(System.DefaultWorkingDirectory)'
   - stage: BuildSecond
+    jobs:
       - job: Validate_Test_Failing
         steps:
           - task: DotNetCoreCLI@2
