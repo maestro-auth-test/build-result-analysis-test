@@ -24,7 +24,7 @@ stages:
                 **\BuildResultAnalysisTest.dll
                 !**\obj\**
               searchFolder: '$(System.DefaultWorkingDirectory)'
-  - stage: Build
+  - stage: Build02
     displayName: Build_ChangingName02
     jobs:
       - job: Validate_Test_Failing
