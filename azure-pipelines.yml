@@ -25,7 +25,7 @@ stages:
                 !**\obj\**
               searchFolder: '$(System.DefaultWorkingDirectory)'
   - stage: Build02
-    displayName: Build_ChangingName02
+    displayName: Build_ChangingName
     jobs:
       - job: Validate_Test_Failing
         steps:

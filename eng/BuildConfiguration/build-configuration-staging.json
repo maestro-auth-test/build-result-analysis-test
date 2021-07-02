@@ -1,7 +1,12 @@
 {
   "RetryByAnyError": false,
   "RetryCountLimit": 1,
-  "RetryByPipeline": {
-    "RetryStages": [ { "StageName": "Build" } ]
+  "RetryByErrorsInPipeline": {
+    "ErrorInPipelineByStage": [
+      {
+        "StageName": "Build",
+        "ErrorRegex": ".*Vstest failed with error.*"
+      }
+    ]
   }
 }
