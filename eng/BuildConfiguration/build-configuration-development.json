@@ -2,7 +2,7 @@
   "RetryByAnyError": false,
   "RetryCountLimit": 1,
   "RetryByErrorsInPipeline": {
-    "ErrorInPipelineByJobsInStage": [
+    "ErrorInPipelineByJobs": [
       {
         "ErrorRegex": ".*Vstest failed with error.*",
         "JobsNames": [ "Validate_Test_Failing" ]
