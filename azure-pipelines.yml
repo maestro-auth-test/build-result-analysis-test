@@ -6,26 +6,15 @@ pool:
 
 steps:
 - powershell: eng\common\build.ps1
-        -configuration Debug
-        -prepareMachine
-        -ci
-        -restore
-        -test
-        -projects $(Build.SourcesDirectory)\src\BuildResultAnalysisTest\BuildResultAnalysisTest.csproj
-        /bl:$(Build.SourcesDirectory)\artifacts\log\$(_BuildConfig)\Helix.binlog
-        /p:RestoreUsingNuGetTargets=false
-    displayName: Run Helix Tests
-    env:
-        SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-              HelixAccessToken: ''
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-    projects: '**\*.csproj'
-- task: VSTest@2
-  inputs:
-    testSelector: 'testAssemblies'
-    testAssemblyVer2: |
-      **\BuildResultAnalysisTest.dll
-      !**\obj\**
-    searchFolder: '$(System.DefaultWorkingDirectory)'
+    -configuration Debug
+    -prepareMachine
+    -ci
+    -restore
+    -test
+    -projects $(Build.SourcesDirectory)\src\BuildResultAnalysisTest\BuildResultAnalysisTest.csproj
+    /bl:$(Build.SourcesDirectory)\artifacts\log\$(_BuildConfig)\Helix.binlog
+    /p:RestoreUsingNuGetTargets=false
+  displayName: Run Helix Tests
+  env:
+    SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+    HelixAccessToken: ''
