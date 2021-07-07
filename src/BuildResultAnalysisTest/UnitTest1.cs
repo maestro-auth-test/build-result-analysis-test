@@ -4,8 +4,9 @@ namespace BuildResultAnalysisTest
 {
     public class Tests
     {
-        [Test]
-        public void TestAlwaysFailing()
+        [TestCase("Ali")]
+        [TestCase("Ali02")]
+        public void TestAlwaysFailing(string scenario)
         {
             Assert.Fail();
         }
