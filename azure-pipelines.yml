@@ -6,7 +6,7 @@ pool:
 
 
 phases:
-  -jobs:
+  jobs:
     - job: Validate_Test_Failing
       steps:
         - publish: $(Build.SourcesDirectory)\eng\BuildConfiguration
