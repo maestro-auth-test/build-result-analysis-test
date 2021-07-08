@@ -10,14 +10,14 @@ phases:
     - job: Validate_Test_Failing
       steps:
         - publish: $(Build.SourcesDirectory)\eng\BuildConfiguration
-        artifact: BuildConfiguration
-        displayName: Publish Build Config
+          artifact: BuildConfiguration
+          displayName: Publish Build Config
         - task: DotNetCoreCLI@2
-        inputs:
+          inputs:
             command: 'build'
             projects: '**\BuildResultAnalysisTest.csproj'
         - task: VSTest@2
-        inputs:
+          inputs:
             testSelector: 'testAssemblies'
             testAssemblyVer2: |
             **\BuildResultAnalysisTest.dll
