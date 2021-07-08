@@ -6,7 +6,7 @@ pool:
 
 stages:
   - stage: Build
-    displayName: Build_ChangingName
+    phases:
     jobs:
       - job: Validate_Test_Failing
         steps:
@@ -22,21 +22,5 @@ stages:
               testSelector: 'testAssemblies'
               testAssemblyVer2: |
                 **\BuildResultAnalysisTest.dll
-                !**\obj\**
-              searchFolder: '$(System.DefaultWorkingDirectory)'
-  - stage: Build02
-    displayName: Build_ChangingName
-    jobs:
-      - job: Validate_Test_Failing
-        steps:
-          - task: DotNetCoreCLI@2
-            inputs:
-              command: 'build'
-              projects: '**\SecondaryTests.csproj'
-          - task: VSTest@2
-            inputs:
-              testSelector: 'testAssemblies'
-              testAssemblyVer2: |
-                **\SecondaryTests.dll
                 !**\obj\**
               searchFolder: '$(System.DefaultWorkingDirectory)'
