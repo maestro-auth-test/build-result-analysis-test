@@ -12,7 +12,7 @@ steps:
     -restore
     -test
     -projects $(Build.SourcesDirectory)\src\BuildResultAnalysisTest\BuildResultAnalysisTest.csproj
-    /bl:$(Build.SourcesDirectory)\artifacts\log\$(_BuildConfig)\Helix.binlog
+    /bl:$(Build.SourcesDirectory)\artifacts\log\Debug\Helix.binlog
     /p:RestoreUsingNuGetTargets=false
   displayName: Run Helix Tests
   env:
