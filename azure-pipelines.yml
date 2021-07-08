@@ -4,23 +4,22 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
-stages:
-  - stage: Build
-    phases:
-    jobs:
-      - job: Validate_Test_Failing
-        steps:
-          - publish: $(Build.SourcesDirectory)\eng\BuildConfiguration
-            artifact: BuildConfiguration
-            displayName: Publish Build Config
-          - task: DotNetCoreCLI@2
-            inputs:
-              command: 'build'
-              projects: '**\BuildResultAnalysisTest.csproj'
-          - task: VSTest@2
-            inputs:
-              testSelector: 'testAssemblies'
-              testAssemblyVer2: |
-                **\BuildResultAnalysisTest.dll
-                !**\obj\**
-              searchFolder: '$(System.DefaultWorkingDirectory)'
+
+phases:
+  -jobs:
+    - job: Validate_Test_Failing
+      steps:
+        - publish: $(Build.SourcesDirectory)\eng\BuildConfiguration
+        artifact: BuildConfiguration
+        displayName: Publish Build Config
+        - task: DotNetCoreCLI@2
+        inputs:
+            command: 'build'
+            projects: '**\BuildResultAnalysisTest.csproj'
+        - task: VSTest@2
+        inputs:
+            testSelector: 'testAssemblies'
+            testAssemblyVer2: |
+            **\BuildResultAnalysisTest.dll
+            !**\obj\**
+            searchFolder: '$(System.DefaultWorkingDirectory)'
