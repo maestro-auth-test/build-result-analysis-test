@@ -17,6 +17,6 @@ jobs:
           XUnitRuntimeTargetFramework: netcoreapp3.1 # specify the framework you want to use for the xUnit runner
           XUnitRunnerVersion: 2.4.0 # specify the version of xUnit runner you wish to use here
           IncludeDotNetCli: true
-          DotNetCliPackageType: runtime
-          DotNetCliVersion: 2.1.403 # full list of versions here: https://raw.githubusercontent.com/dotnet/core/main/release-notes/releases.json
+          DotNetCliPackageType: sdk
+          DotNetCliVersion: 3.1.410 # full list of versions here: https://raw.githubusercontent.com/dotnet/core/main/release-notes/releases.json
           Creator: almend # specify an appropriate Creator here -- required for external builds
