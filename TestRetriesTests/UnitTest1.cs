@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using Xunit;
 
@@ -8,6 +7,19 @@ namespace TestRetriesTests
     {
         [Fact]
         public void FailOnceThenPass()
+        {
+            var target = Path.Combine(Path.GetTempPath(), "my-test-file-123456.snt");
+            bool exists = File.Exists(target);
+            if (!exists)
+            {
+                File.WriteAllText(target, "Test failed once");
+            }
+
+            Assert.True(exists);
+        }
+
+        [Fact]
+        public void FailThreeTimesThenPass()
         {
             var target = Path.Combine(Path.GetTempPath(), "my-test-file-123456.snt");
             bool exists = File.Exists(target);
