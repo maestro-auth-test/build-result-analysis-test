@@ -4,6 +4,7 @@ trigger:
 pool:
   vmImage: 'windows-latest'
 
+steps:
 - template: /eng/common/templates/steps/send-to-helix.yml
     parameters:
       HelixSource: pr/your/helix/source # sources must start with pr/, official/, prodcon/, or agent/
