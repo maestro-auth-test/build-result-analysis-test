@@ -8,26 +8,7 @@ namespace BuildResultAnalysisTest
         [Test]
         public void FailOnceThenPass()
         {
-            var target = Path.Combine(Path.GetTempPath(), "my-test-file-123456.snt");
-            bool exists = File.Exists(target);
-            var all = "";
-            if (exists)
-            {
-                all = File.ReadAllText(target);
-                File.WriteAllText(target, "Test failed twice");
-                if (all.Contains("Test failed twice"))
-                {
-                    File.WriteAllText(target, "Test failed three times");
-                }
-
-            }
-            if (!exists)
-            {
-                File.WriteAllText(target, "Test failed once");
-            }
-
-
-            Assert.True(all.Contains("Test failed three times"));
+            Assert.Fail();
         }
     }
 }
