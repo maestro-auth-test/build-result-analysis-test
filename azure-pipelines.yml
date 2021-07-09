@@ -9,14 +9,16 @@ jobs:
     steps:
     - template: /eng/common/templates/steps/send-to-helix.yml
       parameters:
-          HelixSource: pr/your/helix/source # sources must start with pr/, official/, prodcon/, or agent/
+          HelixSource: pr/test/buildresult/$(Build.SourceBranch) # sources must start with pr/, official/, prodcon/, or agent/
           HelixType: type/tests
           HelixTargetQueues: Windows.10.Amd64.Open; # specify appropriate queues here; see https://helix.dot.net/ for a list of queues
           XUnitProjects: $(Build.SourcesDirectory)/TestRetriesTests/TestRetriesTests.csproj # specify your xUnit projects (semicolon delimited) here!
           XUnitPublishTargetFramework: netcoreapp3.1 # specify your publish target framework here
-          XUnitRuntimeTargetFramework: netcoreapp3.1 # specify the framework you want to use for the xUnit runner
-          XUnitRunnerVersion: 2.4.0 # specify the version of xUnit runner you wish to use here
+          XUnitTargetFramework: netcoreapp3.1 # specify the framework you want to use for the xUnit runner
+          XUnitRunnerVersion: 2.4.1 # specify the version of xUnit runner you wish to use here
           IncludeDotNetCli: true
+          EnableXUnitReporter: true
+          WaitForWorkItemCompletion: true
           DotNetCliPackageType: sdk
           DotNetCliVersion: 3.1.410 # full list of versions here: https://raw.githubusercontent.com/dotnet/core/main/release-notes/releases.json
           Creator: almend # specify an appropriate Creator here -- required for external builds
