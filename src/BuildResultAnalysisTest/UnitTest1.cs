@@ -15,6 +15,11 @@ namespace BuildResultAnalysisTest
             {
                 all = File.ReadAllText(target);
                 File.WriteAllText(target, "Test failed twice");
+                if (all.Contains("Test failed twice"))
+                {
+                    File.WriteAllText(target, "Test failed three times");
+                }
+
             }
             if (!exists)
             {
@@ -22,7 +27,7 @@ namespace BuildResultAnalysisTest
             }
 
 
-            Assert.True(all.Contains("Test failed twice"));
+            Assert.True(all.Contains("Test failed three times"));
         }
     }
 }
