@@ -1,5 +1,5 @@
 {
   "version": 1,
   "defaultOnFailure": "rerun",
-  "localRerunCount": 8
+  "localRerunCount": 2
 }
