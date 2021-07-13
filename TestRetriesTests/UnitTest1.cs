@@ -34,5 +34,11 @@ namespace TestRetriesTests
 
             Assert.True(exists);
         }
+
+        [Fact]
+        public void AlwaysPassing()
+        {
+            Assert.True(true);
+        }
     }
 }
