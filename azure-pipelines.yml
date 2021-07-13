@@ -3,7 +3,7 @@ trigger:
 
 pool:
   name: NetCorePublic-Pool
-  queue: BuildPool.Windows.10.Amd64.VS2019.Open
+  queue: buildpool.server.amd64.vs2019.open
 
 steps:
 - task: DotNetCoreCLI@2
