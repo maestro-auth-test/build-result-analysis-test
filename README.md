@@ -1,4 +1,4 @@
 # build-result-analysis-test
 Test repository for build-result-analysis
 Control test 09
-V03
+V04
