@@ -1,4 +1,4 @@
 # build-result-analysis-test
 Test repository for build-result-analysis
 
-control test 40
+control test 41
