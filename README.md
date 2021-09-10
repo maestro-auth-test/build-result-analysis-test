@@ -1,2 +1,2 @@
 # build-result-analysis-test
-Test repository for build-result-analysis. V04
+Test repository for build-result-analysis. V05
