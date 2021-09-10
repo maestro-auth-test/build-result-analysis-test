@@ -1,2 +1,2 @@
 # build-result-analysis-test
-Test repository for build-result-analysis. V10
+Test repository for build-result-analysis. V11
