@@ -1,3 +1,3 @@
 # build-result-analysis-test
 Test repository for build-result-analysis.
-V05
+V06
