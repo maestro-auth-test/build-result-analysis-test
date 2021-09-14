@@ -17,9 +17,12 @@ namespace TestRetriesTests
                 File.WriteAllText(target, "Test failed once");
             }
 
+            if (exists)
+            {
+                File.WriteAllText(target, "Test failed twice");
+            }
 
-
-            Assert.True(exists);
+            Assert.True(false);
         }
 
         [Theory]
