@@ -17,28 +17,6 @@ namespace TestRetriesTests
                 File.WriteAllText(target, "Test failed once");
             }
 
-            if (exists)
-            {
-                File.WriteAllText(target, "Test failed twice");
-            }
-
-            Assert.True(false);
-        }
-
-        [Theory]
-        [InlineData("my-test-file-123456.snt")]
-        [InlineData("my-test-file-123457.snt")]
-        public void FailOnceThenPassDataDriven(string fileName)
-        {
-            var target = Path.Combine(Path.GetTempPath(), fileName);
-            bool exists = File.Exists(target);
-            if (!exists)
-            {
-                File.WriteAllText(target, "Test failed once");
-            }
-
-
-
             Assert.True(exists);
         }
 
