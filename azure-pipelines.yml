@@ -6,6 +6,9 @@ pool:
   queue: buildpool.server.amd64.vs2019.open
 
 steps:
+- publish: $(Build.SourcesDirectory)\eng\BuildConfiguration
+  artifact: BuildConfiguration
+  displayName: Publish Build Config
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
