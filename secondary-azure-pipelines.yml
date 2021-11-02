@@ -9,10 +9,3 @@ steps:
   inputs:
     command: 'build'
     projects: '**\*.csproj'
-- task: VSTest@2
-  inputs:
-    testSelector: 'testAssemblies'
-    testAssemblyVer2: |
-      **\SecondaryTests.dll
-      !**\obj\**
-    searchFolder: '$(System.DefaultWorkingDirectory)'

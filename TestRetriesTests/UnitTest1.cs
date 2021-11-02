@@ -16,8 +16,8 @@ namespace TestRetriesTests
             {
                 File.WriteAllText(target, "Test failed once");
             }
-
             Assert.True(exists);
+            
         }
 
         [Fact]
