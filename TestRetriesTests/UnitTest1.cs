@@ -10,20 +10,14 @@ namespace TestRetriesTests
         [Fact]
         public void FailOnceThenPass()
         {
-            var target = Path.Combine(Path.GetTempPath(), "my-test-file-123454.snt");
-            bool exists = File.Exists(target);
-            if (!exists)
-            {
-                File.WriteAllText(target, "Test failed once");
-            }
-            Assert.True(exists);
+            Assert.True(false);
             
         }
 
         [Fact]
         public void AlwaysPassing()
         {
-            Assert.True(true);
+            Assert.True(false);
         }
     }
 }
