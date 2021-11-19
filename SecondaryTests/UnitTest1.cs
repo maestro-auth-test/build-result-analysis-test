@@ -13,7 +13,6 @@ namespace SecondaryTests
         public void FailOnceThenPass()
         {
             Assert.True(true);
-
         }
 
         [Fact]
