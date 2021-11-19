@@ -2,8 +2,8 @@ trigger:
 - main
 
 pool:
-  name: NetCore1ESPool-Internal
-  demands: ImageOverride -equals Build.Server.Amd64.VS2019
+  name: NetCorePublic-Int-Pool 
+  queue: buildpool.server.amd64.vs2019.open
 
 jobs:
   - job: TestRetries
