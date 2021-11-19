@@ -2,7 +2,8 @@ trigger:
 - main
 
 pool:
-  vmImage: 'windows-latest'
+  name: NetCorePublic-Pool
+  queue: buildpool.server.amd64.vs2019.open
 
 steps:
 - task: DotNetCoreCLI@2
