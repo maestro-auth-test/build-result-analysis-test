@@ -9,10 +9,17 @@ namespace SecondaryTests
         {
         }
 
-        [Test]
-        public void FailingTest()
+        [Fact]
+        public void FailOnceThenPass()
         {
-            Assert.Pass();
+            Assert.True(false);
+
+        }
+
+        [Fact]
+        public void AlwaysPassing()
+        {
+            Assert.True(false);
         }
     }
 }
