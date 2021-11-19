@@ -7,7 +7,8 @@ trigger:
 - main
 
 pool:
-  vmImage: 'windows-latest'
+  name: NetCore1ESPool-Internal
+  demands: ImageOverride -equals Build.Server.Amd64.VS2019
 
 variables:
   solution: '**/*.sln'
