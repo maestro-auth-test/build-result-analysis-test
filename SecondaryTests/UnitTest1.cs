@@ -12,7 +12,7 @@ namespace SecondaryTests
         [Test]
         public void FailingTest()
         {
-            Assert.Pass();
+            Assert.Fail();
         }
     }
 }

@@ -7,8 +7,7 @@ namespace BuildResultAnalysisTest
         [Test]
         public void TestAlwaysFailing()
         {
-            Assert.Pass();
+            Assert.Fail();
         }
-
     }
 }
