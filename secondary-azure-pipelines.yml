@@ -2,7 +2,7 @@ trigger:
 - main
 
 pool:
-  name: NetCorePublic-Int-Pool 
+  name: NetCorePublic-Pool 
   queue: buildpool.server.amd64.vs2019.open
 
 jobs:
