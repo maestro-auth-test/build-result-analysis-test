@@ -12,13 +12,13 @@ namespace SecondaryTests
         [Fact]
         public void FailOnceThenPass()
         {
-            Assert.True(true);
+            Assert.True(false);
         }
 
         [Fact]
         public void AlwaysPassing()
         {
-            Assert.True(true);
+            Assert.True(false);
         }
     }
 }

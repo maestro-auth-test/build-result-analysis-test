@@ -8,7 +8,7 @@ namespace BuildResultAnalysisTest
         [Test]
         public void FailOnceThenPass()
         {
-            Assert.Pass();
+            Assert.Fail();
         }
     }
 }
