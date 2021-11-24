@@ -10,14 +10,14 @@ namespace TestRetriesTests
         [Fact]
         public void FailOnceThenPass()
         {
-            Assert.True(false);
+            Assert.True(true);
             
         }
 
         [Fact]
         public void AlwaysPassing()
         {
-            Assert.True(false);
+            Assert.True(true);
         }
     }
 }
