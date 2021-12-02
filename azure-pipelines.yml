@@ -6,6 +6,19 @@ pool:
   queue: buildpool.server.amd64.vs2019.open
 
 jobs:
+  - job: FailingTests
+    steps:
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'build'
+        projects: '**\*.csproj'
+    - task: VSTest@2
+      inputs:
+        testSelector: 'testAssemblies'
+        testAssemblyVer2: |
+          **\BuildResultAnalysisTest.dll
+          !**\obj\**
+        searchFolder: '$(System.DefaultWorkingDirectory)'
   - job: HelixTests
     steps:
     - template: /eng/common/templates/steps/send-to-helix.yml
@@ -23,14 +36,3 @@ jobs:
           DotNetCliPackageType: sdk
           DotNetCliVersion: 3.1.410 # full list of versions here: https://raw.githubusercontent.com/dotnet/core/main/release-notes/releases.json
           Creator: almend # specify an appropriate Creator here -- required for external builds
-    - task: DotNetCoreCLI@2
-      inputs:
-        command: 'build'
-        projects: '**\*.csproj'
-    - task: VSTest@2
-      inputs:
-        testSelector: 'testAssemblies'
-        testAssemblyVer2: |
-          **\BuildResultAnalysisTest.dll
-          !**\obj\**
-        searchFolder: '$(System.DefaultWorkingDirectory)'
