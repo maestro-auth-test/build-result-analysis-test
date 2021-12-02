@@ -32,7 +32,7 @@ namespace TestRetriesTests
         [Fact]
         public void GetFiles()
         {
-            string[] fileEntries = Directory.GetFiles(Environment.GetEnvironmentVariable("HELIX_WORKITEM_PAYLOAD"));
+            string[] fileEntries = Directory.GetFiles(Environment.GetEnvironmentVariable("HELIX_CORRELATION_PAYLOAD"));
             foreach (string fileName in fileEntries)
             {
                 _testOutputHelper.WriteLine("Processed file HELIX_WORKITEM_PAYLOAD '{0}'.", fileName);
@@ -51,7 +51,7 @@ namespace TestRetriesTests
         [Fact]
         public void FailOnceThenPass()
         {
-            var target = Path.Combine(Environment.GetEnvironmentVariable("HELIX_WORKITEM_PAYLOAD"), "my-result-123456.txt");
+            var target = Path.Combine(Environment.GetEnvironmentVariable("HELIX_CORRELATION_PAYLOAD"), "my-result-123456.txt");
             var result = false;
 
             var lines = File.ReadAllLines(target);
