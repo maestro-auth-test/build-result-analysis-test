@@ -1,11 +1,19 @@
 using System;
 using System.IO;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace TestRetriesTests
 {
     public class UnitTest1
     {
+        private readonly ITestOutputHelper _testOutputHelper;
+
+        public UnitTest1(ITestOutputHelper testOutputHelper)
+        {
+            _testOutputHelper = testOutputHelper;
+        }
+
         [Fact]
         public void Attempt1FailOnceThenPass()
         {
@@ -21,6 +29,24 @@ namespace TestRetriesTests
             Assert.True(result);
         }
 
+        [Fact]
+        public void GetFiles()
+        {
+            string[] fileEntries = Directory.GetFiles(Environment.GetEnvironmentVariable("HELIX_WORKITEM_PAYLOAD"));
+            foreach (string fileName in fileEntries)
+            {
+                _testOutputHelper.WriteLine("Processed file HELIX_WORKITEM_PAYLOAD '{0}'.", fileName);
+            }
+
+
+            string[] fileEntriesSecond = Directory.GetFiles(Environment.GetEnvironmentVariable("HELIX_WORKITEM_ROOT"));
+            foreach (string fileName in fileEntriesSecond)
+            {
+                _testOutputHelper.WriteLine("Processed file HELIX_WORKITEM_ROOT '{0}'.", fileName);
+            }
+
+            Assert.False(true);
+        }
 
         [Fact]
         public void FailOnceThenPass()
