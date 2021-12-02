@@ -9,7 +9,7 @@ namespace TestRetriesTests
         [Fact]
         public void Attempt1FailOnceThenPass()
         {
-            var target = Path.Combine(Environment.GetEnvironmentVariable("HELIX_WORKITEM_ROOT"), "myresult123456", "my-result-123456.txt");
+            var target = Path.Combine(Environment.GetEnvironmentVariable("HELIX_WORKITEM_PAYLOAD"), "myresult123456", "my-result-123456.txt");
             var result = false;
 
             var lines = File.ReadAllLines(target);
@@ -25,7 +25,7 @@ namespace TestRetriesTests
         [Fact]
         public void FailOnceThenPass()
         {
-            var target = Path.Combine(Environment.GetEnvironmentVariable("HELIX_WORKITEM_ROOT"), "my-result-123456.txt");
+            var target = Path.Combine(Environment.GetEnvironmentVariable("HELIX_WORKITEM_PAYLOAD"), "my-result-123456.txt");
             var result = false;
 
             var lines = File.ReadAllLines(target);
