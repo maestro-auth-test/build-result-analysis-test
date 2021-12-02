@@ -16,7 +16,7 @@ jobs:
           HelixSource: pr/test/buildresult/$(Build.SourceBranch) # sources must start with pr/, official/, prodcon/, or agent/
           HelixType: type/tests
           HelixTargetQueues: Windows.10.Amd64.Open; # specify appropriate queues here; see https://helix.dot.net/ for a list of queues
-          CorrelationPayloadDirectory: $(Agent.TempDirectory)/myresult123456
+          CorrelationPayloadDirectory: $(Build.SourcesDirectory)/myresult123456
           XUnitProjects: $(Build.SourcesDirectory)/TestRetriesTests/TestRetriesTests.csproj # specify your xUnit projects (semicolon delimited) here!
           XUnitPublishTargetFramework: netcoreapp3.1 # specify your publish target framework here
           XUnitTargetFramework: netcoreapp3.1 # specify the framework you want to use for the xUnit runner
