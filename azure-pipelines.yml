@@ -10,7 +10,7 @@ jobs:
     steps:
     - task: CmdLine@2
       inputs:
-        script: mkdir $(Build.SourcesDirectory)\myresult123456 |  echo "True" > $(Build.SourcesDirectory)\myresult123456\my-result-123456.txt
+        script: mkdir $(Build.SourcesDirectory)\myresult123456 |  echo "Fail" > $(Build.SourcesDirectory)\myresult123456\my-result-123456.txt
     - template: /eng/common/templates/steps/send-to-helix.yml
       parameters:
           HelixSource: pr/test/buildresult/$(Build.SourceBranch) # sources must start with pr/, official/, prodcon/, or agent/
