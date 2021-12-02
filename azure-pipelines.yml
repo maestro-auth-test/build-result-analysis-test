@@ -2,8 +2,8 @@ trigger:
 - main
 
 pool:
-  name: NetCorePublic-Pool
-  queue: buildpool.server.amd64.vs2019.open
+  name: NetCore1ESPool-Public
+  demands: ImageOverride -equals build.server.amd64.vs2019.open
 
 steps:
 - task: DotNetCoreCLI@2
