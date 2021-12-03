@@ -1,76 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Dependencies>
 	<ProductDependencies>
-		<Dependency Name="Microsoft.SymbolUploader.Build.Task" Version="2.0.0-preview.1.21526.15">
-			<Uri>https://dev.azure.com/dnceng/internal/_git/dotnet-symuploader</Uri>
-			<Sha>62ceb439e80bf0814d0ffa17f022d4624ea4aa6c</Sha>
-		</Dependency>
-		<Dependency Name="Microsoft.SymbolUploader" Version="2.0.0-preview.1.21526.15">
-			<Uri>https://dev.azure.com/dnceng/internal/_git/dotnet-symuploader</Uri>
-			<Sha>62ceb439e80bf0814d0ffa17f022d4624ea4aa6c</Sha>
-		</Dependency>
 	</ProductDependencies>
 	<ToolsetDependencies>
-		<Dependency Name="Microsoft.DotNet.Arcade.Sdk" Version="7.0.0-beta.21576.4">
+		<Dependency Name="Microsoft.DotNet.Arcade.Sdk" Version="6.0.0-beta.21356.1">
 			<Uri>https://github.com/dotnet/arcade</Uri>
-			<Sha>427c05909067bb2e484116ae2239456bb45adb85</Sha>
+			<Sha>52058ebd28fff9900b021133294e9e34dc6d0340</Sha>
 		</Dependency>
-		<Dependency Name="Microsoft.DotNet.Build.Tasks.Feed" Version="7.0.0-beta.21576.4">
+		<Dependency Name="Microsoft.DotNet.Helix.Sdk" Version="6.0.0-beta.21356.1">
 			<Uri>https://github.com/dotnet/arcade</Uri>
-			<Sha>427c05909067bb2e484116ae2239456bb45adb85</Sha>
-		</Dependency>
-		<Dependency Name="Microsoft.DotNet.SignTool" Version="7.0.0-beta.21576.4">
-			<Uri>https://github.com/dotnet/arcade</Uri>
-			<Sha>427c05909067bb2e484116ae2239456bb45adb85</Sha>
-		</Dependency>
-		<Dependency Name="Microsoft.DotNet.Helix.Sdk" Version="7.0.0-beta.21576.4">
-			<Uri>https://github.com/dotnet/arcade</Uri>
-			<Sha>427c05909067bb2e484116ae2239456bb45adb85</Sha>
-		</Dependency>
-		<Dependency Name="Microsoft.DotNet.SwaggerGenerator.MSBuild" Version="7.0.0-beta.21576.4">
-			<Uri>https://github.com/dotnet/arcade</Uri>
-			<Sha>427c05909067bb2e484116ae2239456bb45adb85</Sha>
-		</Dependency>
-		<Dependency Name="Microsoft.DotNet.Maestro.Client" Version="1.1.0-beta.21553.1">
-			<Uri>https://github.com/dotnet/arcade-services</Uri>
-			<Sha>354627f34e567c924dc4cc927d1c70a627aeb9f8</Sha>
-		</Dependency>
-		<Dependency Name="Microsoft.DotNet.Maestro.Tasks" Version="1.1.0-beta.21520.4">
-			<Uri>https://github.com/dotnet/arcade-services</Uri>
-			<Sha>a5f3ed9d5f560555ff6d26b286acdcfbb7ce3b14</Sha>
-		</Dependency>
-		<Dependency Name="Microsoft.DotNet.XHarness.CLI" Version="1.0.0-prerelease.21579.1">
-			<Uri>https://github.com/dotnet/xharness</Uri>
-			<Sha>ed75873fb3b4c0e8746bce1fb325bfb5061b9851</Sha>
-		</Dependency>
-		<Dependency Name="Microsoft.Net.Compilers.Toolset" Version="4.0.1-1.21573.5">
-			<Uri>https://github.com/dotnet/roslyn</Uri>
-			<Sha>1fa6e45dd631b37e7b28a78907240aed8a300d50</Sha>
-		</Dependency>
-		<Dependency Name="Microsoft.NET.ILLink.Tasks" Version="6.0.100-1.21519.4">
-			<Uri>https://github.com/dotnet/linker</Uri>
-			<Sha>d0662ed8db919642177ddfd06a1c33895a69015f</Sha>
-		</Dependency>
-		<Dependency Name="Microsoft.SourceLink.GitHub" Version="1.1.1-beta-21579-02">
-			<Uri>https://github.com/dotnet/sourcelink</Uri>
-			<Sha>9c298b01ce0f161622bef0bc0c433a758d0dd3ac</Sha>
-			<SourceBuild RepoName="sourcelink" ManagedOnly="true" />
-		</Dependency>
-		<Dependency Name="Microsoft.SourceLink.AzureRepos.Git" Version="1.1.1-beta-21579-02">
-			<Uri>https://github.com/dotnet/sourcelink</Uri>
-			<Sha>9c298b01ce0f161622bef0bc0c433a758d0dd3ac</Sha>
-		</Dependency>
-		<Dependency Name="Microsoft.DiaSymReader.Pdb2Pdb" Version="1.1.0-beta2-19575-01">
-			<Uri>https://github.com/dotnet/symreader-converter</Uri>
-			<Sha>c5ba7c88f92e2dde156c324a8c8edc04d9fa4fe0</Sha>
-		</Dependency>
-		<Dependency Name="Microsoft.DiaSymReader.Converter" Version="1.1.0-beta2-19575-01">
-			<Uri>https://github.com/dotnet/symreader-converter</Uri>
-			<Sha>c5ba7c88f92e2dde156c324a8c8edc04d9fa4fe0</Sha>
-		</Dependency>
-		<Dependency Name="Microsoft.DotNet.XliffTasks" Version="1.0.0-beta.21518.1">
-			<Uri>https://github.com/dotnet/xliff-tasks</Uri>
-			<Sha>8bf78e6a8537ba89c23fbd1f2f219e5ab4d2a812</Sha>
+			<Sha>52058ebd28fff9900b021133294e9e34dc6d0340</Sha>
 		</Dependency>
 	</ToolsetDependencies>
 </Dependencies>
