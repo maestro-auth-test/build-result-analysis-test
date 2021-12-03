@@ -9,11 +9,11 @@ jobs:
   - job: FailingTests
     steps:
     - task: DotNetCoreCLI@2
-        inputs:
+      inputs:
         command: 'build'
         projects: '**\*.csproj'
     - task: VSTest@2
-        inputs:
+      inputs:
         testSelector: 'testAssemblies'
         testAssemblyVer2: |
             **\BuildResultAnalysisTest.dll
