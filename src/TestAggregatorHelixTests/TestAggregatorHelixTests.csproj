@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Build" Version="$(MicrosoftBuildVersion)" />
+    <PackageReference Include="xunit.core" Version="$(XunitVersion)" />
+    <PackageReference Include="xunit.assert" Version="$(XunitVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Include the eng/common directory to get the files for tests. -->
+    <None Include="$(RepoRoot)eng\common\**" Link="inputs\eng\common\%(RecursiveDir)%(Filename)%(Extension)">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <!-- Include global.json to be able to read the arcade version -->
+    <None Include="$(RepoRoot)global.json" Link="inputs\%(Filename)%(Extension)">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
