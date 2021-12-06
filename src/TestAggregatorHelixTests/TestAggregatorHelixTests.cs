@@ -6,6 +6,7 @@ namespace TestAggregatorHelixTests
 {
     public class TestAggregatorHelixTests
     {
+        //This test is run twice, one with correlation payload message: 'Pass' and other with correlation payload message: 'Fail'
         [Fact]
         public void TestResultDeterminedByCorrelationPayload()
         {
