@@ -7,6 +7,7 @@ namespace BuildResultAnalysisTest
         [Test]
         public void TestAlwaysFailing()
         {
+            // Test comment
             Assert.Fail();
         }
 
