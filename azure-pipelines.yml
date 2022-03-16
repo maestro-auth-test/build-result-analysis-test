@@ -46,7 +46,7 @@ jobs:
     - template: /eng/common/templates/steps/send-to-helix.yml
       parameters:
           HelixSource: pr/test/buildresult/$(Build.SourceBranch) # sources must start with pr/, official/, prodcon/, or agent/
-          HelixType: type/tests
+          HelixType: type/test
           HelixTargetQueues: Windows.10.Amd64.Open; # specify appropriate queues here; see https://helix.dot.net/ for a list of queues
           CorrelationPayloadDirectory: $(Build.SourcesDirectory)/myresult123456
           XUnitProjects: $(Build.SourcesDirectory)/src/TestAggregatorHelixTests/TestAggregatorHelixTests.csproj # specify your xUnit projects (semicolon delimited) here!
