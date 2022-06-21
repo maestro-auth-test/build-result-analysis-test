@@ -2,8 +2,7 @@ trigger:
 - main
 
 pool:
-  name: NetCore1ESPool-Public
-  demands: ImageOverride -equals build.server.amd64.vs2019.open
+  vmImage: windows-latest
 
 steps:
 - task: DotNetCoreCLI@2
