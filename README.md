@@ -1,2 +1,2 @@
 # build-result-analysis-test
-Test repository for build-result-analysis. =/ Azure table
+Test repository for build-result-analysis. July =/ Azure table
