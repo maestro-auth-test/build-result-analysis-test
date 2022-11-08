@@ -10,5 +10,11 @@ namespace BuildResultAnalysisTest
             Assert.Fail();
         }
 
+        [Test]
+        public void TestWithDifferentNameButAlwaysFailing()
+        {
+            Assert.Fail();
+        }
+
     }
 }
