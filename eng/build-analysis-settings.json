@@ -1,11 +1,8 @@
 {
   "PipelinesToAnalyze": [
    {
-      "PipelineData": {
         "PipelineId": 5,
         "PipelineName": "maestro-auth-test.build-result-analysis-test"
-      }
-
     }
   ]
 }
