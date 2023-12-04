@@ -2,8 +2,8 @@
   "FilterPipelines": true,
   "PipelinesToAnalyze": [
     {
-      "PipelineId": 5,
-      "PipelineName": "maestro-auth-test.build-result-analysis-test"
+      "PipelineId": 4,
+      "PipelineName": "build-result-analysis-test"
     }
   ]
 }
