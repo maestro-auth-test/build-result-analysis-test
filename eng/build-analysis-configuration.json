@@ -1,5 +1,4 @@
 {
-  "FilterPipelines": true,
   "PipelinesToAnalyze": [
     {
       "PipelineId": 4,
