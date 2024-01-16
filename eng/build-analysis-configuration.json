@@ -1,7 +1,7 @@
 {
     "PipelinesToAnalyze":[
        {
-          "PipelineId:": 529341,
+          "PipelineId:": 4,
           "PipelineName": "build-result-analysis-test"
        }
     ]
