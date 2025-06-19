@@ -4,6 +4,14 @@ trigger:
 pool:
   vmImage: windows-latest
 
+variables:
+  - name: ArcadeBuildFromSource
+    value: true
+  - name: DotNetBuildFromSource
+    value: true
+  - name: UsePublicFeeds
+    value: true
+
 jobs:
   - job: FailingTests
     steps:

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
+	<!-- Import the SourceBuild.props file if it exists -->
+	<Import Project="$(MSBuildThisFileDirectory)eng\SourceBuild.props" Condition="Exists('$(MSBuildThisFileDirectory)eng\SourceBuild.props')" />
+	
 	<Import Project="Sdk.props" Sdk="Microsoft.DotNet.Arcade.Sdk" />
 
 	<PropertyGroup>
