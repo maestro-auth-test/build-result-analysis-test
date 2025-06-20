@@ -4,21 +4,13 @@ trigger:
 pool:
   vmImage: windows-latest
 
-variables:
-  - name: ArcadeBuildFromSource
-    value: true
-  - name: DotNetBuildFromSource
-    value: true
-  - name: UsePublicFeeds
-    value: true
-
 jobs:
   - job: FailingTests
     steps:
     - task: DotNetCoreCLI@2
       inputs:
         command: 'build'
-        projects: '**\*.csproj'
+        projects: '**\*Tests.csproj'
     - task: VSTest@2
       inputs:
         testSelector: 'testAssemblies'

@@ -13,9 +13,6 @@
 		<DebugSymbols>true</DebugSymbols>
 		<LangVersion>Latest</LangVersion>
 
-		<UsingToolVSSDK>false</UsingToolVSSDK>
-        <GenerateSbom>false</GenerateSbom>
-        <RestoreInternalTooling>false</RestoreInternalTooling>
 		<!--
       Tools and packages produced by this repository support infrastructure and are not shipping on NuGet or via any other official channel.
     -->
