@@ -16,6 +16,10 @@
     <PackageReference Include="Drop.App" Version="$(DropAppVersion)" ExcludeAssets="all" Condition="'$(UsingToolVisualStudioIbcTraining)' == 'true'"/>
   </ItemGroup>
 
+  <PropertyGroup>
+    <RestoreInternalTooling Condition="'$(UsingToolVSSDK)' == 'true' and '$(GenerateSbom)' == 'true' and '$(MSBuildRuntimeType)' != 'Core'">true</RestoreInternalTooling>
+  </PropertyGroup>
+
   <!-- Repository extensibility point -->
   <Import Project="$(RepositoryEngineeringDir)InternalTools.props" Condition="Exists('$(RepositoryEngineeringDir)InternalTools.props')" />
 
