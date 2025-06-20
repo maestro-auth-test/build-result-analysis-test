@@ -8,7 +8,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: '**\*.csproj'
+    projects: '**\*Tests.csproj'
 - task: VSTest@2
   inputs:
     testSelector: 'testAssemblies'

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is used to force the build to only use public feeds -->
+<Project>
+  <PropertyGroup>
+    <!-- Skip restoring internal tools and packages -->
+    <RestoreUsingNuGetTargets>true</RestoreUsingNuGetTargets>
+    <ExcludeRestorePackageImports>true</ExcludeRestorePackageImports>
+    <BuildFromSource>true</BuildFromSource>
+    <DotNetBuildFromSource>true</DotNetBuildFromSource>
+    <ArcadeBuildFromSource>true</ArcadeBuildFromSource>
+    <UsePublicFeeds>true</UsePublicFeeds>
+  </PropertyGroup>
+</Project>

@@ -8,6 +8,5 @@
 	<NuGetVersion>5.8.0</NuGetVersion>
 	<MicrosoftBuildVersion>16.6.0</MicrosoftBuildVersion>
 	<MSBuildProjectCreationVersion>1.4.6</MSBuildProjectCreationVersion>
-	<FluentAssertionsVersion>5.10.3</FluentAssertionsVersion>
   </PropertyGroup>
 </Project>
