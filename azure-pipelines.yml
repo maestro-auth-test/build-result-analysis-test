@@ -8,10 +8,12 @@ jobs:
   - job: FailingTests
     steps:
     - task: DotNetCoreCLI@2
+      displayName: 'Build Test Projects'
       inputs:
         command: 'build'
         projects: '**\*Tests.csproj'
     - task: VSTest@2
+      displayName: 'Run BuildResultAnalysisTests'
       inputs:
         testSelector: 'testAssemblies'
         testAssemblyVer2: |
@@ -21,6 +23,7 @@ jobs:
   - job: HelixTests
     steps:
     - task: CmdLine@2
+      displayName: 'Create Pass Result File'
       inputs:
         script: mkdir $(Build.SourcesDirectory)\myresult123456 |  echo "Pass" > $(Build.SourcesDirectory)\myresult123456\my-result-123456.txt
     - template: /eng/common/templates/steps/send-to-helix.yml
@@ -40,11 +43,12 @@ jobs:
           DotNetCliVersion: 8.0.411 # full list of versions here: https://raw.githubusercontent.com/dotnet/core/main/release-notes/releases.json
           Creator: dotnet-helix-low-bot # specify an appropriate Creator here -- required for external builds
     - task: CmdLine@2
+      displayName: 'Create Fail Result File 1'
       inputs:
         script: mkdir $(Build.SourcesDirectory)\myresult123456 |  echo "Fail" > $(Build.SourcesDirectory)\myresult123456\my-result-123456.txt
     - template: /eng/common/templates/steps/send-to-helix.yml
-      continueOnError: true
       parameters:
+          continueOnError: true
           HelixSource: pr/test/buildresult/$(Build.SourceBranch) # sources must start with pr/, official/, prodcon/, or agent/
           HelixType: type/tests
           HelixTargetQueues: Windows.10.Amd64.Open; # specify appropriate queues here; see https://helix.dot.net/ for a list of queues
@@ -60,11 +64,12 @@ jobs:
           DotNetCliVersion: 8.0.411 # full list of versions here: https://raw.githubusercontent.com/dotnet/core/main/release-notes/releases.json
           Creator: dotnet-helix-low-bot # specify an appropriate Creator here -- required for external builds
     - task: CmdLine@2
+      displayName: 'Create Fail Result File 2'
       inputs:
         script: mkdir $(Build.SourcesDirectory)\myresult123456 |  echo "Fail" > $(Build.SourcesDirectory)\myresult123456\my-result-123456.txt
     - template: /eng/common/templates/steps/send-to-helix.yml
-      continueOnError: true
       parameters:
+          continueOnError: true
           HelixSource: pr/test/buildresult/$(Build.SourceBranch) # sources must start with pr/, official/, prodcon/, or agent/
           HelixType: type/tests
           HelixTargetQueues: Windows.10.Amd64.Open; # specify appropriate queues here; see https://helix.dot.net/ for a list of queues
