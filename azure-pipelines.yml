@@ -53,7 +53,6 @@ jobs:
           script: mkdir $(Build.SourcesDirectory)\myresult123456-fail1 |  echo "Fail" > $(Build.SourcesDirectory)\myresult123456-fail1\my-result-123456.txt
       - template: /eng/common/templates/steps/send-to-helix.yml
         parameters:
-          continueOnError: true
           HelixSource: pr/test/buildresult/$(Build.SourceBranch) # sources must start with pr/, official/, prodcon/, or agent/
           HelixType: type/tests
           HelixTargetQueues: Windows.10.Amd64.Open; # specify appropriate queues here; see https://helix.dot.net/ for a list of queues
@@ -78,7 +77,6 @@ jobs:
           script: mkdir $(Build.SourcesDirectory)\myresult123456-fail2 |  echo "Fail" > $(Build.SourcesDirectory)\myresult123456-fail2\my-result-123456.txt
       - template: /eng/common/templates/steps/send-to-helix.yml
         parameters:
-          continueOnError: true
           HelixSource: pr/test/buildresult/$(Build.SourceBranch) # sources must start with pr/, official/, prodcon/, or agent/
           HelixType: type/tests
           HelixTargetQueues: Windows.10.Amd64.Open; # specify appropriate queues here; see https://helix.dot.net/ for a list of queues
