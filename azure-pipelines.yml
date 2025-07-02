@@ -37,7 +37,7 @@ jobs:
           EnableXUnitReporter: true
           WaitForWorkItemCompletion: true
           DotNetCliPackageType: sdk
-          DotNetCliVersion: 8.0.17 # full list of versions here: https://raw.githubusercontent.com/dotnet/core/main/release-notes/releases.json
+          DotNetCliVersion: 8.0.411 # full list of versions here: https://raw.githubusercontent.com/dotnet/core/main/release-notes/releases.json
           Creator: dotnet-helix-low-bot # specify an appropriate Creator here -- required for external builds
     - task: CmdLine@2
       inputs:
@@ -56,7 +56,7 @@ jobs:
           EnableXUnitReporter: true
           WaitForWorkItemCompletion: true
           DotNetCliPackageType: sdk
-          DotNetCliVersion: 8.0.17  # full list of versions here: https://raw.githubusercontent.com/dotnet/core/main/release-notes/releases.json
+          DotNetCliVersion: 8.0.411 # full list of versions here: https://raw.githubusercontent.com/dotnet/core/main/release-notes/releases.json
           Creator: dotnet-helix-low-bot # specify an appropriate Creator here -- required for external builds
     - task: CmdLine@2
       inputs:
@@ -76,5 +76,5 @@ jobs:
           WaitForWorkItemCompletion: true
           DotNetCliPackageType: sdk
           HelixBaseUri: 'https://helix.dot.net/'
-          DotNetCliVersion: 8.0.17  # full list of versions here: https://raw.githubusercontent.com/dotnet/core/main/release-notes/releases.json
+          DotNetCliVersion: 8.0.411  # full list of versions here: https://raw.githubusercontent.com/dotnet/core/main/release-notes/releases.json
           Creator: dotnet-helix-low-bot # specify an appropriate Creator here -- required for external builds
