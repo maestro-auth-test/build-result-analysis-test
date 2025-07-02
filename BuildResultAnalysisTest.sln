@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.31907.60
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildResultAnalysisTest", "src\BuildResultAnalysisTest\BuildResultAnalysisTest.csproj", "{7BFF74D5-5898-4A69-9462-A8356D2447D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildResultAnalysisTest", "src\BuildResultAnalysisTests\BuildResultAnalysisTests.csproj", "{7BFF74D5-5898-4A69-9462-A8356D2447D0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecondaryTests", "SecondaryTests\SecondaryTests.csproj", "{AFA27321-FE4F-4CFF-BF39-11488BC09B79}"
 EndProject
