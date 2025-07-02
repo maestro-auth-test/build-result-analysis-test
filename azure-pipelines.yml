@@ -15,7 +15,7 @@ jobs:
       inputs:
         testSelector: 'testAssemblies'
         testAssemblyVer2: |
-            **\BuildResultAnalysisTest.dll
+            **\BuildResultAnalysisTests.dll
             !**\obj\**
         searchFolder: '$(System.DefaultWorkingDirectory)'
   - job: HelixTests
@@ -40,6 +40,7 @@ jobs:
           DotNetCliVersion: 8.0.411 # full list of versions here: https://raw.githubusercontent.com/dotnet/core/main/release-notes/releases.json
           Creator: dotnet-helix-low-bot # specify an appropriate Creator here -- required for external builds
     - task: CmdLine@2
+      continueOnError: true
       inputs:
         script: mkdir $(Build.SourcesDirectory)\myresult123456 |  echo "Fail" > $(Build.SourcesDirectory)\myresult123456\my-result-123456.txt
     - template: /eng/common/templates/steps/send-to-helix.yml
@@ -59,6 +60,7 @@ jobs:
           DotNetCliVersion: 8.0.411 # full list of versions here: https://raw.githubusercontent.com/dotnet/core/main/release-notes/releases.json
           Creator: dotnet-helix-low-bot # specify an appropriate Creator here -- required for external builds
     - task: CmdLine@2
+      continueOnError: true
       inputs:
         script: mkdir $(Build.SourcesDirectory)\myresult123456 |  echo "Fail" > $(Build.SourcesDirectory)\myresult123456\my-result-123456.txt
     - template: /eng/common/templates/steps/send-to-helix.yml
