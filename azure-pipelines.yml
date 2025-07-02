@@ -32,7 +32,7 @@ jobs:
           XUnitProjects: $(Build.SourcesDirectory)/src/TestAggregatorHelixTests/TestAggregatorHelixTests.csproj # specify your xUnit projects (semicolon delimited) here!
           XUnitPublishTargetFramework: net8.0 # specify your publish target framework here
           XUnitTargetFramework: net8.0 # specify the framework you want to use for the xUnit runner
-          XUnitRunnerVersion: 2.9.3 # specify the version of xUnit runner you wish to use here
+          XUnitRunnerVersion: 2.4.2 # specify the version of xUnit runner you wish to use here
           IncludeDotNetCli: true
           EnableXUnitReporter: true
           WaitForWorkItemCompletion: true
@@ -51,7 +51,7 @@ jobs:
           XUnitProjects: $(Build.SourcesDirectory)/src/TestAggregatorHelixTests/TestAggregatorHelixTests.csproj # specify your xUnit projects (semicolon delimited) here!
           XUnitPublishTargetFramework: net8.0 # specify your publish target framework here
           XUnitTargetFramework: net8.0 # specify the framework you want to use for the xUnit runner
-          XUnitRunnerVersion: 2.9.3 # specify the version of xUnit runner you wish to use here
+          XUnitRunnerVersion: 2.4.2 # specify the version of xUnit runner you wish to use here
           IncludeDotNetCli: true
           EnableXUnitReporter: true
           WaitForWorkItemCompletion: true
@@ -70,7 +70,7 @@ jobs:
           XUnitProjects: $(Build.SourcesDirectory)/src/TestAggregatorHelixTests/TestAggregatorHelixTests.csproj # specify your xUnit projects (semicolon delimited) here!
           XUnitPublishTargetFramework: net8.0 # specify your publish target framework here
           XUnitTargetFramework: net8.0 # specify the framework you want to use for the xUnit runner
-          XUnitRunnerVersion: 2.9.3 # specify the version of xUnit runner you wish to use here
+          XUnitRunnerVersion: 2.4.2 # specify the version of xUnit runner you wish to use here
           IncludeDotNetCli: true
           EnableXUnitReporter: true
           WaitForWorkItemCompletion: true
