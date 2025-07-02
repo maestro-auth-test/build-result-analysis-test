@@ -5,7 +5,8 @@ pool:
   vmImage: windows-latest
 
 jobs:
-  - job: FailingTests
+  - job: SuccessfulTest
+    timeoutInMinutes: 120
     steps:
     - task: DotNetCoreCLI@2
       displayName: 'Build Test Projects'
@@ -25,13 +26,13 @@ jobs:
     - task: CmdLine@2
       displayName: 'Create Pass Result File'
       inputs:
-        script: mkdir $(Build.SourcesDirectory)\myresult123456 |  echo "Pass" > $(Build.SourcesDirectory)\myresult123456\my-result-123456.txt
+        script: mkdir $(Build.SourcesDirectory)\myresult123456-ok |  echo "Pass" > $(Build.SourcesDirectory)\myresult123456-ok\my-result-123456.txt
     - template: /eng/common/templates/steps/send-to-helix.yml
       parameters:
           HelixSource: pr/test/buildresult/$(Build.SourceBranch) # sources must start with pr/, official/, prodcon/, or agent/
           HelixType: type/tests
           HelixTargetQueues: Windows.10.Amd64.Open; # specify appropriate queues here; see https://helix.dot.net/ for a list of queues
-          CorrelationPayloadDirectory: $(Build.SourcesDirectory)/myresult123456
+          CorrelationPayloadDirectory: $(Build.SourcesDirectory)/myresult123456-ok
           XUnitProjects: $(Build.SourcesDirectory)/src/TestAggregatorHelixTests/TestAggregatorHelixTests.csproj # specify your xUnit projects (semicolon delimited) here!
           XUnitPublishTargetFramework: net8.0 # specify your publish target framework here
           XUnitTargetFramework: net8.0 # specify the framework you want to use for the xUnit runner
@@ -42,17 +43,21 @@ jobs:
           DotNetCliPackageType: sdk
           DotNetCliVersion: 8.0.411 # full list of versions here: https://raw.githubusercontent.com/dotnet/core/main/release-notes/releases.json
           Creator: dotnet-helix-low-bot # specify an appropriate Creator here -- required for external builds
-    - task: CmdLine@2
-      displayName: 'Create Fail Result File 1'
-      inputs:
-        script: mkdir $(Build.SourcesDirectory)\myresult123456 |  echo "Fail" > $(Build.SourcesDirectory)\myresult123456\my-result-123456.txt
-    - template: /eng/common/templates/steps/send-to-helix.yml
-      parameters:
+  - job: HelixTest1
+    displayName: 'Helix failed Test 1'
+    timeoutInMinutes: 120
+    steps:
+      - task: CmdLine@2
+        displayName: 'Create Fail Result File 1'
+        inputs:
+          script: mkdir $(Build.SourcesDirectory)\myresult123456-fail1 |  echo "Fail" > $(Build.SourcesDirectory)\myresult123456-fail1\my-result-123456.txt
+      - template: /eng/common/templates/steps/send-to-helix.yml
+        parameters:
           continueOnError: true
           HelixSource: pr/test/buildresult/$(Build.SourceBranch) # sources must start with pr/, official/, prodcon/, or agent/
           HelixType: type/tests
           HelixTargetQueues: Windows.10.Amd64.Open; # specify appropriate queues here; see https://helix.dot.net/ for a list of queues
-          CorrelationPayloadDirectory: $(Build.SourcesDirectory)/myresult123456
+          CorrelationPayloadDirectory: $(Build.SourcesDirectory)/myresult123456-fail1
           XUnitProjects: $(Build.SourcesDirectory)/src/TestAggregatorHelixTests/TestAggregatorHelixTests.csproj # specify your xUnit projects (semicolon delimited) here!
           XUnitPublishTargetFramework: net8.0 # specify your publish target framework here
           XUnitTargetFramework: net8.0 # specify the framework you want to use for the xUnit runner
@@ -63,17 +68,21 @@ jobs:
           DotNetCliPackageType: sdk
           DotNetCliVersion: 8.0.411 # full list of versions here: https://raw.githubusercontent.com/dotnet/core/main/release-notes/releases.json
           Creator: dotnet-helix-low-bot # specify an appropriate Creator here -- required for external builds
-    - task: CmdLine@2
-      displayName: 'Create Fail Result File 2'
-      inputs:
-        script: mkdir $(Build.SourcesDirectory)\myresult123456 |  echo "Fail" > $(Build.SourcesDirectory)\myresult123456\my-result-123456.txt
-    - template: /eng/common/templates/steps/send-to-helix.yml
-      parameters:
+  - job: HelixTest2
+    displayName: 'Helix failed Test 2'
+    timeoutInMinutes: 120
+    steps:
+      - task: CmdLine@2
+        displayName: 'Create Fail Result File 2'
+        inputs:
+          script: mkdir $(Build.SourcesDirectory)\myresult123456-fail2 |  echo "Fail" > $(Build.SourcesDirectory)\myresult123456-fail2\my-result-123456.txt
+      - template: /eng/common/templates/steps/send-to-helix.yml
+        parameters:
           continueOnError: true
           HelixSource: pr/test/buildresult/$(Build.SourceBranch) # sources must start with pr/, official/, prodcon/, or agent/
           HelixType: type/tests
           HelixTargetQueues: Windows.10.Amd64.Open; # specify appropriate queues here; see https://helix.dot.net/ for a list of queues
-          CorrelationPayloadDirectory: $(Build.SourcesDirectory)/myresult123456
+          CorrelationPayloadDirectory: $(Build.SourcesDirectory)/myresult123456-fail2
           XUnitProjects: $(Build.SourcesDirectory)/src/TestAggregatorHelixTests/TestAggregatorHelixTests.csproj # specify your xUnit projects (semicolon delimited) here!
           XUnitPublishTargetFramework: net8.0 # specify your publish target framework here
           XUnitTargetFramework: net8.0 # specify the framework you want to use for the xUnit runner
@@ -82,6 +91,5 @@ jobs:
           EnableXUnitReporter: true
           WaitForWorkItemCompletion: true
           DotNetCliPackageType: sdk
-          HelixBaseUri: 'https://helix.dot.net/'
-          DotNetCliVersion: 8.0.411  # full list of versions here: https://raw.githubusercontent.com/dotnet/core/main/release-notes/releases.json
+          DotNetCliVersion: 8.0.411 # full list of versions here: https://raw.githubusercontent.com/dotnet/core/main/release-notes/releases.json
           Creator: dotnet-helix-low-bot # specify an appropriate Creator here -- required for external builds
