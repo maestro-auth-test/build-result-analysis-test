@@ -1,17 +1,21 @@
-trigger:
+trigger: none
+
+pr:
 - main
 
 pool:
-  vmImage: windows-latest
+  name: NetCore-Public
+  demands:
+  - ImageOverride -equals build.azurelinux.3.amd64.open
 
 steps:
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'build'
+    command: build
     projects: '**\*Tests.csproj'
 - task: VSTest@2
   inputs:
-    testSelector: 'testAssemblies'
+    testSelector: testAssemblies
     testAssemblyVer2: |
       **\SecondaryTests.dll
       !**\obj\**
