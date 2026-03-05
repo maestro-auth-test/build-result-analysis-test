@@ -1,0 +1,39 @@
+parameters:
+- name: jobName
+  type: string
+- name: displayName
+  type: string
+- name: timeoutInMinutes
+  type: number
+  default: 120
+- name: resultDirName
+  type: string
+- name: resultContent
+  type: string
+
+jobs:
+- job: ${{ parameters.jobName }}
+  displayName: ${{ parameters.displayName }}
+  timeoutInMinutes: ${{ parameters.timeoutInMinutes }}
+  steps:
+    - script: >-
+        mkdir -p $(Build.SourcesDirectory)/${{ parameters.resultDirName }} &&
+        echo "${{ parameters.resultContent }}" > $(Build.SourcesDirectory)/${{ parameters.resultDirName }}/my-result-123456.txt
+      displayName: Create test result file
+
+    - template: /eng/common/templates/steps/send-to-helix.yml
+      parameters:
+        HelixSource: pr/test/buildresult/$(Build.SourceBranch)
+        HelixType: type/tests
+        HelixTargetQueues: Windows.10.Amd64.Open;
+        CorrelationPayloadDirectory: $(Build.SourcesDirectory)/${{ parameters.resultDirName }}
+        XUnitProjects: $(Build.SourcesDirectory)/src/TestAggregatorHelixTests/TestAggregatorHelixTests.csproj
+        XUnitPublishTargetFramework: net8.0
+        XUnitTargetFramework: net8.0
+        XUnitRunnerVersion: 2.4.2
+        IncludeDotNetCli: true
+        EnableXUnitReporter: true
+        WaitForWorkItemCompletion: true
+        DotNetCliPackageType: sdk
+        DotNetCliVersion: 8.0.411
+        Creator: dotnet-helix-low-bot
