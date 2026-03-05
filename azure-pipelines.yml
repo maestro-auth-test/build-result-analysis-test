@@ -13,12 +13,13 @@ jobs:
   timeoutInMinutes: 120
   steps:
   - task: UseDotNet@2
+    displayName: Install .NET SDK
     inputs:
       packageType: sdk
       useGlobalJson: true
 
   - task: DotNetCoreCLI@2
-    displayName: Build Test Projects
+    displayName: Build test Projects
     inputs:
       command: build
       projects: '**/*Tests.csproj'

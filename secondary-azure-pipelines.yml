@@ -10,14 +10,16 @@ pool:
 
 steps:
 - task: UseDotNet@2
+  displayName: Install .NET SDK
   inputs:
     packageType: sdk
     useGlobalJson: true
 
 - task: DotNetCoreCLI@2
+  displayName: Build test Projects
   inputs:
     command: build
-    projects: '**\*Tests.csproj'
+    projects: '**/*Tests.csproj'
 
 - task: VSTest@2
   inputs:
@@ -25,4 +27,4 @@ steps:
     testAssemblyVer2: |
       **\SecondaryTests.dll
       !**\obj\**
-    searchFolder: '$(System.DefaultWorkingDirectory)'
+    searchFolder: $(System.DefaultWorkingDirectory)
