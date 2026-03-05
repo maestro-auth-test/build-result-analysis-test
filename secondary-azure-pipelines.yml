@@ -9,10 +9,16 @@ pool:
   - ImageOverride -equals build.azurelinux.3.amd64.open
 
 steps:
+- task: UseDotNet@2
+  inputs:
+    packageType: sdk
+    useGlobalJson: true
+
 - task: DotNetCoreCLI@2
   inputs:
     command: build
     projects: '**\*Tests.csproj'
+
 - task: VSTest@2
   inputs:
     testSelector: testAssemblies
