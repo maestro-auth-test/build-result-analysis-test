@@ -21,10 +21,8 @@ steps:
     command: build
     projects: '**/*Tests.csproj'
 
-- task: VSTest@2
+- task: DotNetCoreCLI@2
+  displayName: Run BuildResultAnalysisTests
   inputs:
-    testSelector: testAssemblies
-    testAssemblyVer2: |
-      **\SecondaryTests.dll
-      !**\obj\**
-    searchFolder: $(System.DefaultWorkingDirectory)
+    command: test
+    projects: '**/*BuildResultAnalysisTests.csproj'
