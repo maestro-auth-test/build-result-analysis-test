@@ -34,19 +34,19 @@ jobs:
   parameters:
     jobName: HelixTests
     displayName: Passing Helix test
-    resultDirName: myresult123456-ok
+    correlationPayloadDir: myresult123456-ok
     resultContent: Pass
 
 - template: /eng/templates/helix-test-job.yml
   parameters:
     jobName: HelixTest1
     displayName: Failing Helix test 1
-    resultDirName: myresult123456-fail1
+    correlationPayloadDir: myresult123456-fail1
     resultContent: Fail
 
 - template: /eng/templates/helix-test-job.yml
   parameters:
     jobName: HelixTest2
     displayName: Failing Helix test 2
-    resultDirName: myresult123456-fail2
-    resultContent: Fail
+    correlationPayloadDir: myresult123456-knownissue
+    resultContent: KnownIssue
