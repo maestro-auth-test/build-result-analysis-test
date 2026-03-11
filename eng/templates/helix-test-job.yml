@@ -6,7 +6,7 @@ parameters:
 - name: timeoutInMinutes
   type: number
   default: 120
-- name: resultDirName
+- name: correlationPayloadDir
   type: string
 - name: resultContent
   type: string
@@ -17,8 +17,8 @@ jobs:
   timeoutInMinutes: ${{ parameters.timeoutInMinutes }}
   steps:
     - script: >-
-        mkdir -p $(Build.SourcesDirectory)/${{ parameters.resultDirName }} &&
-        echo "${{ parameters.resultContent }}" > $(Build.SourcesDirectory)/${{ parameters.resultDirName }}/my-result-123456.txt
+        mkdir -p $(Build.SourcesDirectory)/${{ parameters.correlationPayloadDir }} &&
+        echo "${{ parameters.resultContent }}" > $(Build.SourcesDirectory)/${{ parameters.correlationPayloadDir }}/my-result-123456.txt
       displayName: Create test result file
 
     - template: /eng/common/templates/steps/send-to-helix.yml
@@ -26,7 +26,7 @@ jobs:
         HelixSource: pr/test/buildresult/$(Build.SourceBranch)
         HelixType: type/tests
         HelixTargetQueues: Windows.10.Amd64.Open;
-        CorrelationPayloadDirectory: $(Build.SourcesDirectory)/${{ parameters.resultDirName }}
+        CorrelationPayloadDirectory: $(Build.SourcesDirectory)/${{ parameters.correlationPayloadDir }}
         XUnitProjects: $(Build.SourcesDirectory)/src/TestAggregatorHelixTests/TestAggregatorHelixTests.csproj
         XUnitPublishTargetFramework: net8.0
         XUnitTargetFramework: net8.0
