@@ -1,7 +1,14 @@
 trigger: none
 
 pr:
-- main
+  branches:
+    include:
+    - main
+  paths:
+    include:
+    - '*'
+    exclude:
+    - '**/*.md'
 
 pool:
   name: NetCore-Public
