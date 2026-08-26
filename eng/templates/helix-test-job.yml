@@ -25,15 +25,15 @@ jobs:
       parameters:
         HelixSource: pr/test/buildresult/$(Build.SourceBranch)
         HelixType: type/tests
-        HelixTargetQueues: Windows.10.Amd64.Open;
+        HelixTargetQueues: Windows.11.Arm64.Open;
         CorrelationPayloadDirectory: $(Build.SourcesDirectory)/${{ parameters.correlationPayloadDir }}
         XUnitProjects: $(Build.SourcesDirectory)/src/TestAggregatorHelixTests/TestAggregatorHelixTests.csproj
-        XUnitPublishTargetFramework: net8.0
-        XUnitTargetFramework: net8.0
+        XUnitPublishTargetFramework: net10.0
+        XUnitTargetFramework: net10.0
         XUnitRunnerVersion: 2.4.2
         IncludeDotNetCli: true
         EnableXUnitReporter: true
         WaitForWorkItemCompletion: true
         DotNetCliPackageType: sdk
-        DotNetCliVersion: 8.0.411
+        DotNetCliVersion: 10.0.400
         Creator: dotnet-helix-low-bot
