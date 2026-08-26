@@ -25,7 +25,7 @@ jobs:
       parameters:
         HelixSource: pr/test/buildresult/$(Build.SourceBranch)
         HelixType: type/tests
-        HelixTargetQueues: Windows.10.Amd64.Open;
+        HelixTargetQueues: Windows.11.Arm64.Open;
         CorrelationPayloadDirectory: $(Build.SourcesDirectory)/${{ parameters.correlationPayloadDir }}
         XUnitProjects: $(Build.SourcesDirectory)/src/TestAggregatorHelixTests/TestAggregatorHelixTests.csproj
         XUnitPublishTargetFramework: net8.0
