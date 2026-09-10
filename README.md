@@ -1,2 +1,2 @@
 # build-result-analysis-test
-Test repository for build-result-analysis. CCC
+Test repository for build-result-analysis. ddd
