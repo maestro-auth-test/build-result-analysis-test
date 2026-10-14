@@ -10,50 +10,24 @@ pr:
     exclude:
     - '**/*.md'
 
+parameters:
+- name: scenarioTestResult
+  type: string
+  default: KnownIssue
+  values:
+  - Fail
+  - KnownIssue
+  - Pass
+
 pool:
   name: NetCore-Public
   demands:
   - ImageOverride -equals build.azurelinux.3.amd64.open
 
 jobs:
-- job: SuccessfulTest
-  timeoutInMinutes: 120
-  steps:
-  - task: UseDotNet@2
-    displayName: Install .NET SDK
-    inputs:
-      packageType: sdk
-      useGlobalJson: true
-
-  - task: DotNetCoreCLI@2
-    displayName: Build test Projects
-    inputs:
-      command: build
-      projects: '**/*Tests.csproj'
-
-  - task: DotNetCoreCLI@2
-    displayName: Run BuildResultAnalysisTests
-    inputs:
-      command: test
-      projects: '**/*BuildResultAnalysisTests.csproj'
-
 - template: /eng/templates/helix-test-job.yml
   parameters:
-    jobName: HelixTests
-    displayName: Passing Helix test
-    correlationPayloadDir: myresult123456-ok
-    resultContent: Pass
-
-- template: /eng/templates/helix-test-job.yml
-  parameters:
-    jobName: HelixTest1
-    displayName: Failing Helix test 1
-    correlationPayloadDir: myresult123456-fail1
-    resultContent: Fail
-
-- template: /eng/templates/helix-test-job.yml
-  parameters:
-    jobName: HelixTest2
-    displayName: Failing Helix test 2
-    correlationPayloadDir: myresult123456-knownissue
-    resultContent: KnownIssue
+    jobName: ScenarioHelixTest
+    displayName: Scenario Helix test
+    correlationPayloadDir: myresult123456-scenario
+    resultContent: ${{ parameters.scenarioTestResult }}
