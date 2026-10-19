@@ -3,7 +3,7 @@ trigger: none
 pr:
   branches:
     include:
-    - main
+    - fixtures/known-issue-only
   paths:
     include:
     - '*'
@@ -16,44 +16,50 @@ pool:
   - ImageOverride -equals build.azurelinux.3.amd64.open
 
 jobs:
-- job: SuccessfulTest
-  timeoutInMinutes: 120
+- job: ScenarioHelixTest
+  displayName: Scenario Helix test
+  timeoutInMinutes: 45
   steps:
-  - task: UseDotNet@2
-    displayName: Install .NET SDK
-    inputs:
-      packageType: sdk
-      useGlobalJson: true
+  - script: >-
+      mkdir -p "$(Build.SourcesDirectory)/myresult123456-scenario" &&
+      echo "KnownIssue" > "$(Build.SourcesDirectory)/myresult123456-scenario/my-result-123456.txt"
+    displayName: Create test result file
+  - template: /eng/common/templates/steps/send-to-helix.yml
+    parameters:
+      HelixSource: pr/public/maestro-auth-test/build-result-analysis-test/$(Build.SourceBranch)
+      HelixType: type/tests
+      HelixTargetQueues: Windows.11.Arm64.Open;
+      CorrelationPayloadDirectory: $(Build.SourcesDirectory)/myresult123456-scenario
+      XUnitProjects: $(Build.SourcesDirectory)/src/TestAggregatorHelixTests/TestAggregatorHelixTests.csproj
+      XUnitPublishTargetFramework: net10.0
+      XUnitRuntimeTargetFramework: netcoreapp2.0
+      XUnitRunnerVersion: 2.4.2
+      IncludeDotNetCli: true
+      WaitForWorkItemCompletion: false
+      HelixProjectArguments: /p:EnableHelixJobMonitor=true
+      DotNetCliPackageType: sdk
+      DotNetCliVersion: 10.0.400
+      Creator: dotnet-helix-low-bot
 
-  - task: DotNetCoreCLI@2
-    displayName: Build test Projects
-    inputs:
-      command: build
-      projects: '**/*Tests.csproj'
-
-  - task: DotNetCoreCLI@2
-    displayName: Run BuildResultAnalysisTests
-    inputs:
-      command: test
-      projects: '**/*BuildResultAnalysisTests.csproj'
-
-- template: /eng/templates/helix-test-job.yml
-  parameters:
-    jobName: HelixTests
-    displayName: Passing Helix test
-    correlationPayloadDir: myresult123456-ok
-    resultContent: Pass
-
-- template: /eng/templates/helix-test-job.yml
-  parameters:
-    jobName: HelixTest1
-    displayName: Failing Helix test 1
-    correlationPayloadDir: myresult123456-fail1
-    resultContent: Fail
-
-- template: /eng/templates/helix-test-job.yml
-  parameters:
-    jobName: HelixTest2
-    displayName: Failing Helix test 2
-    correlationPayloadDir: myresult123456-knownissue
-    resultContent: KnownIssue
+- job: HelixJobMonitor
+  displayName: Monitor Helix Jobs
+  dependsOn: ScenarioHelixTest
+  condition: succeededOrFailed()
+  timeoutInMinutes: 45
+  steps:
+  - script: ./eng/common/dotnet.sh tool restore --configfile .config/helix-monitor.nuget.config
+    displayName: Restore Helix Job Monitor
+  - script: >-
+      ./eng/common/dotnet.sh tool run dotnet-helix-job-monitor --
+      --organization maestro-auth-test
+      --repository build-result-analysis-test
+      --build-reason "$(Build.Reason)"
+      --source-branch "$(Build.SourceBranch)"
+      --stage-name "$(System.StageName)"
+      --stage-attempt "$(System.StageAttempt)"
+      --job-attempt "$(System.JobAttempt)"
+      --max-wait-minutes 40
+      --use-fully-qualified-test-name true
+    displayName: Monitor Helix Jobs
+    env:
+      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
