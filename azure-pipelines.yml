@@ -12,3 +12,10 @@ jobs:
   steps:
   - checkout: none
   - script: echo "Healthy pipeline control"
+  - task: AzureCLI@2
+    displayName: Must fail service connection validation before any job starts
+    inputs:
+      azureSubscription: 'scenario-missing-021c7ec74d2c4528b12d104ff13714f6'
+      scriptType: bash
+      scriptLocation: inlineScript
+      inlineScript: echo "This task must never execute"
