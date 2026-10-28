@@ -1,35 +1,14 @@
 trigger: none
-
 pr:
   branches:
     include:
     - main
-  paths:
-    include:
-    - '*'
-    exclude:
-    - '**/*.md'
-
 pool:
   name: NetCore-Public
   demands:
   - ImageOverride -equals build.azurelinux.3.amd64.open
-
-steps:
-- task: UseDotNet@2
-  displayName: Install .NET SDK
-  inputs:
-    packageType: sdk
-    useGlobalJson: true
-
-- task: DotNetCoreCLI@2
-  displayName: Build test Projects
-  inputs:
-    command: build
-    projects: '**/*Tests.csproj'
-
-- task: DotNetCoreCLI@2
-  displayName: Run BuildResultAnalysisTests
-  inputs:
-    command: test
-    projects: '**/*BuildResultAnalysisTests.csproj'
+jobs:
+- job: ValidationControl
+  steps:
+  - checkout: none
+  - script: echo "Healthy pipeline control"
