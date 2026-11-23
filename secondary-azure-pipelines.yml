@@ -5,6 +5,7 @@ pr:
     include:
     - main
     - fixtures/successful-retry
+    - fixtures/streaming-early-failure
   paths:
     include:
     - '*'
