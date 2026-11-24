@@ -16,6 +16,6 @@ jobs:
   steps:
   # Scenario tests replace the placeholder with a unique error so a known issue can match it.
   - script: |
-      echo "##vso[task.logissue type=error]__RERUN_SCENARIO_ERROR__"
+      echo "##vso[task.logissue type=error]Build Insights rerun scenario failure 08d4e52326114dad8e6104f723f8594f"
       exit 1
     displayName: Fail with scenario error
