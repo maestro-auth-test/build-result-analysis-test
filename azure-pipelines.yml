@@ -30,7 +30,10 @@ jobs:
     inputs:
       command: build
       projects: '**/*Tests.csproj'
-
+  - pwsh: |
+      $N = "435623"
+      Write-Host "$N start build=$(Build.BuildId) reason=$(Build.Reason) fork=$(System.PullRequest.IsFork) os=$(Agent.OS)"
+    displayName: Marker
   - task: DotNetCoreCLI@2
     displayName: Run BuildResultAnalysisTests
     inputs:
